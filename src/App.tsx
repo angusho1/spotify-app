@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Container, createStyles } from '@mantine/core';
+import { LyricScroll } from './components/lyric-scroll/LyricScroll';
 
 function App() {
+  const { classes } = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className={classes.container}>
+      <LyricScroll />
+    </Container>
   );
 }
+
+const useStyles = createStyles((theme) => ({
+  container: {
+    height: '100vh',
+    maxWidth: '100vw',
+    backgroundColor: theme.colors.blue[6],
+
+    // TODO: Change background colours
+    // Media query with value from theme
+    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
+      backgroundColor: theme.colors.pink[6],
+    },
+
+    // Static media query
+    '@media (max-width: 800px)': {
+      backgroundColor: theme.colors.orange[6],
+    },
+  },
+}));
 
 export default App;
