@@ -1,4 +1,4 @@
-import { Container, ScrollArea, useMantineTheme } from "@mantine/core";
+import { Container, createStyles, ScrollArea, useMantineTheme } from "@mantine/core";
 import { useRef, useState } from "react";
 import { Lyric } from "./Lyric";
 import { Section } from "./Section";
@@ -9,6 +9,8 @@ interface LyricScrollProps {
 }
 
 export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: LyricScrollProps) => {
+    const { classes } = useStyles();
+
     const viewport = useRef<HTMLDivElement>(null);
     const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
     const theme = useMantineTheme();
@@ -28,7 +30,7 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
 
     return (
         <ScrollArea
-            style={{ height: '100vh' }}
+            className={classes.scrollArea}
             viewportRef={viewport}
             onScrollPositionChange={onScrollPositionChange}
         >
@@ -89,3 +91,9 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
     );
 };
 
+const useStyles = createStyles((theme) => ({
+    scrollArea: {
+        height: '100vh',
+        flex: 'auto',
+    },
+}));

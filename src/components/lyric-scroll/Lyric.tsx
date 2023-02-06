@@ -8,7 +8,7 @@ interface LyricProps {
 }
 
 export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
-    const { classes } = useStyles();
+    const { classes, cx } = useStyles();
     const ref = useRef() as Ref<HTMLHeadingElement>;
     const { height } = useViewportSize();
 
@@ -23,13 +23,15 @@ export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
     };
 
     const getTextClasses = () => {
-        let classNames = classes.lyricText;
         const rect = getDomRect();
-        if (!rect) return classNames;
+        if (!rect) return classes.lyricText;
         const midpoint = height/2;
-        if (rect.bottom < midpoint) classNames += ` ${classes.pastText}`;
-        else if (rect.top <= midpoint && rect.bottom >= midpoint) classNames += ` ${classes.currentText}`;
-        return classNames;
+        return cx(
+            classes.lyricText, {
+                [classes.pastText]: rect.bottom < midpoint,
+                [classes.currentText]: rect.top <= midpoint && rect.bottom >= midpoint,
+            }
+        );
     };
 
     return (
