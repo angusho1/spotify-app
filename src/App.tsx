@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { Container, createStyles } from '@mantine/core';
+import { Container, createStyles, useMantineTheme } from '@mantine/core';
 import { LyricScroll } from './components/lyric-scroll/LyricScroll';
 
 function App() {
   const { classes } = useStyles();
+  const theme = useMantineTheme();
+  const [backgroundColor, setBackgroundColor] = useState<string>(theme.colors.grape[6]);
 
   return (
-    <Container className={classes.container}>
-      <LyricScroll />
+    <Container
+      sx={{
+        backgroundColor
+      }}
+      className={classes.container}
+    >
+      <LyricScroll
+        currentBackgroundColor={backgroundColor}
+        setBackgroundColor={setBackgroundColor}
+      />
     </Container>
   );
 }
@@ -17,18 +27,7 @@ const useStyles = createStyles((theme) => ({
   container: {
     height: '100vh',
     maxWidth: '100vw',
-    backgroundColor: theme.colors.blue[6],
-
-    // TODO: Change background colours
-    // Media query with value from theme
-    [`@media (max-width: ${theme.breakpoints.xl}px)`]: {
-      backgroundColor: theme.colors.pink[6],
-    },
-
-    // Static media query
-    '@media (max-width: 800px)': {
-      backgroundColor: theme.colors.orange[6],
-    },
+    transition: 'background-color 500ms linear'
   },
 }));
 

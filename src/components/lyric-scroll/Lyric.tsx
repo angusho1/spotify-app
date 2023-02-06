@@ -3,11 +3,11 @@ import { useViewportSize } from "@mantine/hooks";
 import { Ref, useRef } from "react";
 
 interface LyricProps {
-    text: string;
+    children: React.ReactNode;
     scrollToPosition: (position: number) => void;
 }
 
-export const Lyric = ({ text, scrollToPosition }: LyricProps) => {
+export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
     const { classes } = useStyles();
     const ref = useRef() as Ref<HTMLHeadingElement>;
     const { height } = useViewportSize();
@@ -39,7 +39,7 @@ export const Lyric = ({ text, scrollToPosition }: LyricProps) => {
             order={1}
             onClick={scrollToLyric}
         >
-            { text }
+            { children }
         </Title>
     );
 };

@@ -1,10 +1,17 @@
-import { Container, ScrollArea } from "@mantine/core";
+import { Container, ScrollArea, useMantineTheme } from "@mantine/core";
 import { useRef, useState } from "react";
 import { Lyric } from "./Lyric";
+import { Section } from "./Section";
 
-export const LyricScroll = () => {
+interface LyricScrollProps {
+    currentBackgroundColor: string;
+    setBackgroundColor: (color: string) => void;
+}
+
+export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: LyricScrollProps) => {
     const viewport = useRef<HTMLDivElement>(null);
     const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
+    const theme = useMantineTheme();
 
     const scrollToPosition = (position: number) => {
         viewport?.current?.scrollTo({
@@ -13,28 +20,11 @@ export const LyricScroll = () => {
         });
     };
 
-    const lines = [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.',
-        'Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.',
-        'Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.',
-        'Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.',
-        'Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.',
-        'Vivamus id ante vehicula, faucibus neque at, ornare tortor.',
-        'Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.',
-        'Quisque vitae mauris quis nisi ornare mollis id eu enim.',
-        'Suspendisse lobortis faucibus mauris, et tempus enim.',
-        'Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.',
-        'Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.',
-        'Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.',
-        'Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.',
-        'Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.',
-        'Vivamus id ante vehicula, faucibus neque at, ornare tortor.',
-        'Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.',
-        'Quisque vitae mauris quis nisi ornare mollis id eu enim.',
-        'Suspendisse lobortis faucibus mauris, et tempus enim.',
-        'Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.',
-    ];
+    const createLyric = (text: string) => (
+        <Lyric scrollToPosition={scrollToPosition}>
+            { text }
+        </Lyric>
+    );
 
     return (
         <ScrollArea
@@ -43,13 +33,57 @@ export const LyricScroll = () => {
             onScrollPositionChange={onScrollPositionChange}
         >
             <Container>
-                { lines.map((line, i) => (
-                    <Lyric
-                        text={line}
-                        key={i}
-                        scrollToPosition={scrollToPosition}
-                    />
-                )) }
+                <Section
+                    backgroundColor={theme.colors.green[6]}
+                    currentBackgroundColor={currentBackgroundColor}
+                    scrollPosition={scrollPosition.y}
+                    setAsBackground={setBackgroundColor}
+                >
+                    { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
+                    { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }
+                    { createLyric('Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.') }
+                    { createLyric('Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.') }
+                    { createLyric('Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.') }
+                    { createLyric('Vivamus id ante vehicula, faucibus neque at, ornare tortor.') }
+                    { createLyric('Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.') }
+                    { createLyric('Quisque vitae mauris quis nisi ornare mollis id eu enim.') }
+                    { createLyric('Suspendisse lobortis faucibus mauris, et tempus enim.') }
+                    { createLyric('Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.') }
+                </Section>
+                <Section
+                    backgroundColor={theme.colors.orange[6]}
+                    currentBackgroundColor={currentBackgroundColor}
+                    scrollPosition={scrollPosition.y}
+                    setAsBackground={setBackgroundColor}
+                >
+                    { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
+                    { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }
+                    { createLyric('Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.') }
+                    { createLyric('Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.') }
+                    { createLyric('Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.') }
+                    { createLyric('Vivamus id ante vehicula, faucibus neque at, ornare tortor.') }
+                    { createLyric('Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.') }
+                    { createLyric('Quisque vitae mauris quis nisi ornare mollis id eu enim.') }
+                    { createLyric('Suspendisse lobortis faucibus mauris, et tempus enim.') }
+                    { createLyric('Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.') }
+                </Section>
+                <Section
+                    backgroundColor={theme.colors.indigo[6]}
+                    currentBackgroundColor={currentBackgroundColor}
+                    scrollPosition={scrollPosition.y}
+                    setAsBackground={setBackgroundColor}
+                >
+                    { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
+                    { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }
+                    { createLyric('Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.') }
+                    { createLyric('Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.') }
+                    { createLyric('Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.') }
+                    { createLyric('Vivamus id ante vehicula, faucibus neque at, ornare tortor.') }
+                    { createLyric('Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.') }
+                    { createLyric('Quisque vitae mauris quis nisi ornare mollis id eu enim.') }
+                    { createLyric('Suspendisse lobortis faucibus mauris, et tempus enim.') }
+                    { createLyric('Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.') }
+                </Section>
             </Container>
         </ScrollArea>
     );
