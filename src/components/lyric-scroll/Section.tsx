@@ -1,36 +1,49 @@
 import { Container } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { Ref, useEffect, useRef } from "react";
+import { Ref, useContext, useEffect, useRef } from "react";
+import { SectionContext } from "../../App";
+import { PageSection } from "../../types/PageSection.enum";
 
 interface SectionProps {
-    backgroundColor: string;
-    currentBackgroundColor: string;
+    section: PageSection;
     scrollPosition: number;
+    scrollToPosition: (position: number) => void;
     children: React.ReactNode;
-    setAsBackground: (color: string) => void;
 }
 
-export const Section = ({ backgroundColor, currentBackgroundColor, scrollPosition, children, setAsBackground }: SectionProps) => {
+export const Section = ({ section, scrollPosition, scrollToPosition, children }: SectionProps) => {
     const ref = useRef() as Ref<HTMLDivElement>;
     const { height } = useViewportSize();
+    const { pageSection: currentPageSection, clicked, updateSection } = useContext(SectionContext);
 
     const getDomRect = (): DOMRect => {
         return (ref as any)?.current?.getBoundingClientRect();
     };
 
-    const checkBackground = () => {
-        if (currentBackgroundColor === backgroundColor) return;
+    const scrollToSection = () => {
         const rect = getDomRect();
-        const midpoint = height/2;
-        if (rect.top <= midpoint && rect.bottom >= midpoint) {
-            setAsBackground(backgroundColor);
+        const position = rect.top;
+        scrollToPosition(position);
+    };
+
+    const checkSection = () => {
+        if (currentPageSection === section && !clicked) return;
+        if (currentPageSection === section && clicked) {
+            scrollToSection();
+            updateSection({ pageSection: currentPageSection, clicked: false });
+        } else {
+            const rect = getDomRect();
+            const midpoint = height/2;
+            if (rect.top <= midpoint && rect.bottom >= midpoint) {
+                updateSection({ pageSection: section, clicked: false });
+            }
         }
     };
 
     useEffect(() => {
-        checkBackground();
+        checkSection();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [scrollPosition, currentBackgroundColor]);
+    }, [scrollPosition, currentPageSection]);
 
     return (
         <Container

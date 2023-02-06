@@ -1,19 +1,14 @@
-import { Container, createStyles, ScrollArea, useMantineTheme } from "@mantine/core";
+import { Container, createStyles, ScrollArea } from "@mantine/core";
 import { useRef, useState } from "react";
+import { PageSection } from "../../types/PageSection.enum";
 import { Lyric } from "./Lyric";
 import { Section } from "./Section";
 
-interface LyricScrollProps {
-    currentBackgroundColor: string;
-    setBackgroundColor: (color: string) => void;
-}
-
-export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: LyricScrollProps) => {
+export const LyricScroll = () => {
     const { classes } = useStyles();
 
     const viewport = useRef<HTMLDivElement>(null);
     const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
-    const theme = useMantineTheme();
 
     const scrollToPosition = (position: number) => {
         viewport?.current?.scrollTo({
@@ -37,10 +32,9 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
         >
             <Container>
                 <Section
-                    backgroundColor={theme.colors.green[6]}
-                    currentBackgroundColor={currentBackgroundColor}
+                    section={PageSection.INTRO}
                     scrollPosition={scrollPosition.y}
-                    setAsBackground={setBackgroundColor}
+                    scrollToPosition={scrollToPosition}
                 >
                     { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
                     { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }
@@ -54,10 +48,9 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
                     { createLyric('Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.') }
                 </Section>
                 <Section
-                    backgroundColor={theme.colors.orange[6]}
-                    currentBackgroundColor={currentBackgroundColor}
+                    section={PageSection.SECTION2}
                     scrollPosition={scrollPosition.y}
-                    setAsBackground={setBackgroundColor}
+                    scrollToPosition={scrollToPosition}
                 >
                     { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
                     { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }
@@ -71,10 +64,9 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
                     { createLyric('Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.') }
                 </Section>
                 <Section
-                    backgroundColor={theme.colors.indigo[6]}
-                    currentBackgroundColor={currentBackgroundColor}
+                    section={PageSection.SECTION3}
                     scrollPosition={scrollPosition.y}
-                    setAsBackground={setBackgroundColor}
+                    scrollToPosition={scrollToPosition}
                 >
                     { createLyric('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.') }
                     { createLyric('Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.') }

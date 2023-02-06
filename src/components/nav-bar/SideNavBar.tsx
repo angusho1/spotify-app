@@ -1,23 +1,22 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { createStyles, Navbar, Title } from '@mantine/core';
 import { NavButton } from './NavButton';
-
-const sections = [
-    { label: 'Intro' },
-    { label: 'Section 2' },
-    { label: 'Section 3' },
-];
+import { SectionContext } from '../../App';
+import { PageSection } from '../../types/PageSection.enum';
 
 export const SideNavBar = () => {
     const { classes } = useStyles();
-    const [active, setActive] = useState('Intro');
+    const { pageSection, updateSection } = useContext(SectionContext);
 
-    const navButtons = sections.map((item) => (
+    const navButtons = Object.values(PageSection).map((section) => (
         <NavButton
-            key={item.label}
-            label={item.label}
-            isActive={item.label === active}
-            onClick={() => setActive(item.label)}
+            key={section}
+            label={section}
+            isActive={section === pageSection}
+            onClick={() => updateSection({
+                pageSection: section,
+                clicked: true,
+            })}
         />
     ));
 

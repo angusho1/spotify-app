@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import './App.css';
 import { Container, createStyles, Group, useMantineTheme } from '@mantine/core';
 import { LyricScroll } from './components/lyric-scroll/LyricScroll';
 import { SideNavBar } from './components/nav-bar/SideNavBar';
+import { PageSection, PageSectionSettings } from './types/PageSection.enum';
+import { PageSectionState } from './types/PageSectionState.types';
+
+export const SectionContext = createContext({
+  pageSection: PageSection.INTRO,
+  clicked: false,
+  updateSection: (state: PageSectionState) => {},
+});
 
 function App() {
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const [backgroundColor, setBackgroundColor] = useState<string>(theme.colors.grape[6]);
+  const [pageSectionState, setPageSectionState] = useState<PageSectionState>({
+    pageSection: PageSection.INTRO,
+    clicked: false,
+  });
 
   return (
     <Container
       sx={{
-        backgroundColor
+        backgroundColor: PageSectionSettings[pageSectionState.pageSection].color,
       }}
       className={classes.container}
     >
       <Group className={classes.group} align="flex-start" noWrap>
-        <SideNavBar />
-        <LyricScroll
-          currentBackgroundColor={backgroundColor}
-          setBackgroundColor={setBackgroundColor}
-        />
+        <SectionContext.Provider value={{
+          ...pageSectionState,
+          updateSection: setPageSectionState,
+        }}>
+          <SideNavBar />
+          <LyricScroll />
+        </SectionContext.Provider>
       </Group>
     </Container>
   );
