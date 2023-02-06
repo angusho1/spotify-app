@@ -31,6 +31,7 @@ export const LyricScroll = ({ currentBackgroundColor, setBackgroundColor }: Lyri
     return (
         <ScrollArea
             className={classes.scrollArea}
+            classNames={{ scrollbar: classes.scrollbar }}
             viewportRef={viewport}
             onScrollPositionChange={onScrollPositionChange}
         >
@@ -96,4 +97,9 @@ const useStyles = createStyles((theme) => ({
         height: '100vh',
         flex: 'auto',
     },
+    scrollbar: {
+        '&, &:hover': {
+            backgroundColor: 'transparent',
+        },
+    }
 }));
