@@ -1,16 +1,14 @@
 import { Container, ScrollArea } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
 import { useRef, useState } from "react";
 import { Lyric } from "./Lyric";
 
 export const LyricScroll = () => {
     const viewport = useRef<HTMLDivElement>(null);
-    const { height } = useViewportSize();
     const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
 
-    const scrollToPosition = (position: number, elementHeight: number) => {
+    const scrollToPosition = (position: number) => {
         viewport?.current?.scrollTo({
-            top: scrollPosition.y + position - (height/2) + (elementHeight/2),
+            top: scrollPosition.y + position,
             behavior: 'smooth',
         });
     };
@@ -48,7 +46,6 @@ export const LyricScroll = () => {
                 { lines.map((line, i) => (
                     <Lyric
                         text={line}
-                        index={i}
                         key={i}
                         scrollToPosition={scrollToPosition}
                     />

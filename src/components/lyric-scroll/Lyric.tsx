@@ -1,28 +1,43 @@
 import { createStyles, Title } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
 import { Ref, useRef } from "react";
 
 interface LyricProps {
-    index: number;
     text: string;
-    targetRef?: Ref<HTMLElement>;
-    scrollToPosition: (position: number, elementHeight: number) => void;
+    scrollToPosition: (position: number) => void;
 }
 
-export const Lyric = ({ text, index, targetRef, scrollToPosition }: LyricProps) => {
+export const Lyric = ({ text, scrollToPosition }: LyricProps) => {
     const { classes } = useStyles();
     const ref = useRef() as Ref<HTMLHeadingElement>;
+    const { height } = useViewportSize();
 
-    const textClasses = index === 4 ? `${classes.lyricText} ${classes.currentText}` : (index < 4 ? `${classes.lyricText} ${classes.pastText}` : classes.lyricText);
+    const getDomRect = (): DOMRect => {
+        return (ref as any)?.current?.getBoundingClientRect();
+    };
+
+    const scrollToLyric = () => {
+        const rect = getDomRect();
+        const position = rect.top - (height/2) + (rect.height/2);
+        scrollToPosition(position);
+    };
+
+    const getTextClasses = () => {
+        let classNames = classes.lyricText;
+        const rect = getDomRect();
+        if (!rect) return classNames;
+        const midpoint = height/2;
+        if (rect.bottom < midpoint) classNames += ` ${classes.pastText}`;
+        else if (rect.top <= midpoint && rect.bottom >= midpoint) classNames += ` ${classes.currentText}`;
+        return classNames;
+    };
 
     return (
         <Title
             ref={ref}
-            className={textClasses}
+            className={getTextClasses()}
             order={1}
-            onClick={() => {
-                const rect = (ref as any).current.getBoundingClientRect();
-                scrollToPosition(rect.top, rect.height);
-            }}
+            onClick={scrollToLyric}
         >
             { text }
         </Title>
