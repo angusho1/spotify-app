@@ -1,20 +1,60 @@
-import { ScrollArea, Text, Title } from "@mantine/core";
-
-
+import { Container, ScrollArea } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
+import { useRef, useState } from "react";
+import { Lyric } from "./Lyric";
 
 export const LyricScroll = () => {
+    const viewport = useRef<HTMLDivElement>(null);
+    const { height } = useViewportSize();
+    const [scrollPosition, onScrollPositionChange] = useState({ x: 0, y: 0 });
+
+    const scrollToPosition = (position: number, elementHeight: number) => {
+        viewport?.current?.scrollTo({
+            top: scrollPosition.y + position - (height/2) + (elementHeight/2),
+            behavior: 'smooth',
+        });
+    };
+
     const lines = [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus. Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.',
-        'Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque. Suspendisse lobortis faucibus mauris, et tempus enim.',
-        'Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu. Quisque vitae mauris quis nisi ornare mollis id eu enim.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.',
+        'Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.',
+        'Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.',
         'Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.',
+        'Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.',
+        'Vivamus id ante vehicula, faucibus neque at, ornare tortor.',
+        'Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.',
+        'Quisque vitae mauris quis nisi ornare mollis id eu enim.',
+        'Suspendisse lobortis faucibus mauris, et tempus enim.',
+        'Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel faucibus tellus.',
+        'Morbi varius neque eu porta semper. Maecenas euismod et metus ac pellentesque.',
+        'Praesent eleifend risus at malesuada faucibus. Vestibulum aliquet lorem leo, in suscipit nibh tempor eu.',
+        'Vivamus imperdiet arcu id urna rhoncus, vel luctus mauris hendrerit. Sed neque orci, mollis quis velit in, rhoncus lobortis orci.',
+        'Praesent tincidunt tortor sem, ac dictum dui luctus vitae. Nunc feugiat cursus massa eu tincidunt.',
+        'Vivamus id ante vehicula, faucibus neque at, ornare tortor.',
+        'Maecenas euismod ex condimentum, fringilla arcu vitae, aliquet orci.',
+        'Quisque vitae mauris quis nisi ornare mollis id eu enim.',
+        'Suspendisse lobortis faucibus mauris, et tempus enim.',
+        'Donec tempus viverra lorem, in lacinia dui. Mauris nec diam eget tellus sagittis lacinia.',
     ];
 
     return (
-        <ScrollArea style={{ height: 400 }}>
-            { lines.map(line => (
-                <Title order={1}>{ line }</Title>
-            )) }
+        <ScrollArea
+            style={{ height: '100vh' }}
+            viewportRef={viewport}
+            onScrollPositionChange={onScrollPositionChange}
+        >
+            <Container>
+                { lines.map((line, i) => (
+                    <Lyric
+                        text={line}
+                        index={i}
+                        key={i}
+                        scrollToPosition={scrollToPosition}
+                    />
+                )) }
+            </Container>
         </ScrollArea>
     );
 };
+
