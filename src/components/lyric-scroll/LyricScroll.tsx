@@ -37,8 +37,9 @@ export const LyricScroll = () => {
             classNames={{ scrollbar: classes.scrollbar }}
             viewportRef={viewport}
             onScrollPositionChange={onScrollPositionChange}
+            offsetScrollbars
         >
-            <Container>
+            <Container className={classes.sectionsContainer}>
                 <Section
                     section={PageSection.INTRO}
                     {...sectionProps}
@@ -85,5 +86,9 @@ const useStyles = createStyles((theme) => ({
         '&, &:hover': {
             backgroundColor: 'transparent',
         },
-    }
+    },
+    sectionsContainer: {
+        
+        maxWidth: '100vw',
+    },
 }));

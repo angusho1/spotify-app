@@ -10,7 +10,7 @@ export const ProjectSection = ({ name, date, text, url }: ProjectSectionProps) =
     const { classes } = useStyles();
 
     return (
-        <Container className={classes.container}>
+        <Container px={0} className={classes.container}>
             <Group className={classes.group}>
                 <Stack spacing={5}>
                     <Title className={classes.title}>{ name }</Title>

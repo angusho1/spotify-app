@@ -50,6 +50,10 @@ export const SideNavBar = () => {
 const useStyles = createStyles((theme) => ({
     root: {
         border: 'none',
+
+        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+            display: 'none',
+        },
     },
     navbar: {
         height: '100vh',

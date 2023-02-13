@@ -9,7 +9,7 @@ export const ExperienceAlbum = ({ company, position, date, companyDescription, t
     const { classes } = useStyles();
 
     return (
-        <Container className={classes.container}>
+        <Container px={0} className={classes.container}>
             <Group noWrap spacing="lg" className={classes.group}>
                 <a
                     href={companyUrl}

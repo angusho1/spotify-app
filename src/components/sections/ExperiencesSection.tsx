@@ -1,3 +1,4 @@
+import { Container } from "@mantine/core";
 import { WORK_EXPERIENCES } from "../../data/work-experience";
 import { ExperienceAlbum } from "../ExperienceAlbum";
 
@@ -8,7 +9,7 @@ interface ExperiencesSectionProps {
 export const ExperiencesSection = ({ renderLyric }: ExperiencesSectionProps) => {
 
     return (
-        <>
+        <Container px={0}>
             { renderLyric('Work Experience') }
             { WORK_EXPERIENCES.map((experience, index) => (
                 <ExperienceAlbum
@@ -16,7 +17,6 @@ export const ExperiencesSection = ({ renderLyric }: ExperiencesSectionProps) => 
                     {...experience}
                 />   
             ))}
-            { renderLyric('Projects') }
-        </>
+        </Container>
     );
 };

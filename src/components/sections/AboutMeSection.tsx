@@ -18,7 +18,7 @@ export const AboutMeSection = ({ renderLyric }: AboutMeSectionProps) => {
     ];
 
     return (
-        <>
+        <Container px={0}>
             <Container mih="50vh" pt={100} px={0}>
                 <Title fz={60}>Hi, I'm Angus:</Title>
                 { lines.map((line, index) => renderLyric(line, index)) }
@@ -26,6 +26,6 @@ export const AboutMeSection = ({ renderLyric }: AboutMeSectionProps) => {
             { renderLyric('♪') }
             { renderLyric('♪') }
             { renderLyric('♪') }
-        </>
+        </Container>
     );
 };
