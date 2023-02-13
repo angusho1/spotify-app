@@ -3,6 +3,7 @@ export enum PageSection {
     EXPERIENCE = 'Work Experience',
     PROJECTS = 'Projects',
     WHY = 'Why Spotify',
+    FOOTER = 'Footer',
 }
 
 export const PageSectionSettings = {
@@ -17,5 +18,8 @@ export const PageSectionSettings = {
     },
     [PageSection.WHY]: {
         color: '#A4682C',
+    },
+    [PageSection.FOOTER]: {
+        color: '#1DB954',
     },
 };

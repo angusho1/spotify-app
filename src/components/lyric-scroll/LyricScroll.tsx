@@ -1,8 +1,9 @@
-import { Container, createStyles, ScrollArea, Space } from "@mantine/core";
+import { Container, createStyles, ScrollArea } from "@mantine/core";
 import { useRef, useState } from "react";
 import { PageSection } from "../../types/PageSection.enum";
 import { AboutMeSection } from "../sections/AboutMeSection";
 import { ExperiencesSection } from "../sections/ExperiencesSection";
+import { FooterSection } from "../sections/FooterSection";
 import { ProjectsSection } from "../sections/ProjectsSection";
 import { WhySpotifySection } from "../sections/WhySpotifySection";
 import { Lyric } from "./Lyric";
@@ -64,20 +65,12 @@ export const LyricScroll = () => {
                     {...sectionProps}
                 >
                     <WhySpotifySection renderLyric={renderLyric} />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
-                    <Space h="xl" />
+                </Section>
+                <Section
+                    section={PageSection.FOOTER}
+                    {...sectionProps}
+                >
+                    <FooterSection renderLyric={renderLyric} />
                 </Section>
             </Container>
         </ScrollArea>

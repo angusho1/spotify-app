@@ -1,14 +1,22 @@
 import { useContext } from 'react';
-import { createStyles, Navbar, Title } from '@mantine/core';
+import { Container, createStyles, Image, Navbar, Stack, Title } from '@mantine/core';
 import { NavButton } from './NavButton';
 import { SectionContext } from '../../App';
 import { PageSection } from '../../types/PageSection.enum';
+import SpotifyLogo from '../../assets/logos/Spotify_Logo_RGB_White.png';
 
 export const SideNavBar = () => {
     const { classes } = useStyles();
     const { pageSection, updateSection } = useContext(SectionContext);
 
-    const navButtons = Object.values(PageSection).map((section) => (
+    const pages = [
+        PageSection.INTRO,
+        PageSection.EXPERIENCE,
+        PageSection.PROJECTS,
+        PageSection.WHY,
+    ];
+
+    const navButtons = pages.map((section) => (
         <NavButton
             key={section}
             label={section}
@@ -23,20 +31,24 @@ export const SideNavBar = () => {
     return (
         <Navbar
             width={{ sm: 250 }}
-            p="md"
             classNames={{
                 root: classes.root,
             }}
             className={classes.navbar}
         >
             <Navbar.Section grow>
-                <Title
-                    order={3}
-                    color="white"
-                    mb={20}
-                >
-                    My Spotify Application
-                </Title>
+                <Stack align="flex-start" mb={30} spacing={5}>
+                    <Title
+                        order={3}
+                        color="white"
+                        className={classes.logoText}
+                    >
+                        My Application to
+                    </Title>
+                    <Container px={0} className={classes.logo}>
+                        <Image src={SpotifyLogo} />
+                    </Container>
+                </Stack>
                 {navButtons}
             </Navbar.Section>
 
@@ -50,10 +62,18 @@ export const SideNavBar = () => {
 const useStyles = createStyles((theme) => ({
     root: {
         border: 'none',
+        padding: '25px',
 
         [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
             display: 'none',
         },
+    },
+    logoText: {
+        fontSize: theme.fontSizes.md,
+    },
+    logo: {
+        marginLeft: 0,
+        maxWidth: '130px',
     },
     navbar: {
         height: '100vh',
