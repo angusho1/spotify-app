@@ -4,6 +4,7 @@ import { PageSection } from "../../types/PageSection.enum";
 import { AboutMeSection } from "../sections/AboutMeSection";
 import { ExperiencesSection } from "../sections/ExperiencesSection";
 import { ProjectsSection } from "../sections/ProjectsSection";
+import { WhySpotifySection } from "../sections/WhySpotifySection";
 import { Lyric } from "./Lyric";
 import { Section } from "./Section";
 
@@ -57,6 +58,12 @@ export const LyricScroll = () => {
                     {...sectionProps}
                 >
                     <ProjectsSection renderLyric={renderLyric} />
+                </Section>
+                <Section
+                    section={PageSection.WHY}
+                    {...sectionProps}
+                >
+                    <WhySpotifySection renderLyric={renderLyric} />
                     <Space h="xl" />
                     <Space h="xl" />
                     <Space h="xl" />
