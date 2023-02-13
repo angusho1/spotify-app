@@ -1,7 +1,7 @@
 export enum PageSection {
     INTRO = 'About Me',
     EXPERIENCE = 'Work Experience',
-    SECTION3 = 'Section 3',
+    PROJECTS = 'Projects',
 }
 
 export const PageSectionSettings = {
@@ -11,7 +11,7 @@ export const PageSectionSettings = {
     [PageSection.EXPERIENCE]: {
         color: '#a24477',
     },
-    [PageSection.SECTION3]: {
-        color: '#4C6EF5',
+    [PageSection.PROJECTS]: {
+        color: '#413ea6',
     },
 };
