@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { Container, createStyles, Image, Navbar, Stack, Title } from '@mantine/core';
+import { ActionIcon, Anchor, Container, createStyles, Group, Image, Navbar, Stack, Title } from '@mantine/core';
 import { NavButton } from './NavButton';
 import { SectionContext } from '../../App';
 import { PageSection } from '../../types/PageSection.enum';
 import SpotifyLogo from '../../assets/logos/Spotify_Logo_RGB_White.png';
+import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons';
 
 export const SideNavBar = () => {
     const { classes } = useStyles();
@@ -53,7 +54,14 @@ export const SideNavBar = () => {
             </Navbar.Section>
 
             <Navbar.Section className={classes.footer}>
-
+                <Group>
+                    <ActionIcon variant="transparent" className={classes.icon} component="a" href="https://www.linkedin.com/in/angusho24/" target="_blank" aria-label="LinkedIn">
+                        <IconBrandLinkedin />
+                    </ActionIcon>
+                    <ActionIcon variant="transparent" className={classes.icon} component="a" href="https://github.com/angusho1" target="_blank"  aria-label="Github">
+                        <IconBrandGithub />
+                    </ActionIcon>
+                </Group>
             </Navbar.Section>
         </Navbar>
     );
@@ -81,5 +89,14 @@ const useStyles = createStyles((theme) => ({
     },
     footer: {
         borderTop: `1px solid #282828`,
+        paddingTop: '25px',
+    },
+    icon: {
+        color: theme.white,
+
+        '&:hover': {
+            color: '#b3b3b3',
+            transition: 'color .2s linear',
+        },
     },
 }));

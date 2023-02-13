@@ -1,15 +1,21 @@
-import { Anchor, Center, Container, createStyles, Image, Space, Stack, Text, Title } from "@mantine/core";
+import { ActionIcon, Anchor, Container, createStyles, Group, Image, MantineSize, Space, Stack, Text, Title } from "@mantine/core";
+import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons";
 import SpotifyLogo from '../../assets/logos/Spotify_Logo_RGB_Black.png';
 
 interface FooterSectionProps {
     renderLyric: (text: string, key?: any) => JSX.Element;
 }
 
+const socialIconProps = {
+    size: 'xl' as MantineSize,
+    variant: 'transparent' as 'transparent',
+};
+
 export const FooterSection = ({ renderLyric }: FooterSectionProps) => {
     const { classes } = useStyles();
 
     return (
-        <Container px={0} pt={100} pb={150}>
+        <Container px={0} pt={100} pb={100}>
             <Stack align="center" justify="center">
                 <Title order={3} className={classes.logoText}>My Application to</Title>
                 <Container className={classes.logo}>
@@ -18,6 +24,14 @@ export const FooterSection = ({ renderLyric }: FooterSectionProps) => {
                 <Space h="xl" />
                 <Text className={classes.text}>View this project on <Anchor fw={700} color="dark" href="https://github.com/angusho1/spotify-app" target="_blank">Github</Anchor></Text>
                 <Text className={classes.text}>By Angus Ho</Text>
+                <Group>
+                    <ActionIcon className={classes.icon} component="a" href="https://www.linkedin.com/in/angusho24/" target="_blank" aria-label="LinkedIn" {...socialIconProps}>
+                        <IconBrandLinkedin />
+                    </ActionIcon>
+                    <ActionIcon variant="transparent" className={classes.icon} component="a" href="https://github.com/angusho1" target="_blank"  aria-label="Github">
+                        <IconBrandGithub />
+                    </ActionIcon>
+                </Group>
             </Stack>
         </Container>
     );
@@ -33,5 +47,8 @@ const useStyles = createStyles((theme) => ({
     },
     text: {
         fontSize: theme.fontSizes.lg,
+    },
+    icon: {
+        color: theme.black,
     },
 }));
