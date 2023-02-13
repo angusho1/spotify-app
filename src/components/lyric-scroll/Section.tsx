@@ -3,6 +3,7 @@ import { useViewportSize } from "@mantine/hooks";
 import { Ref, useContext, useEffect, useRef } from "react";
 import { SectionContext } from "../../App";
 import { PageSection } from "../../types/PageSection.enum";
+import { getCutoff } from "../../utils/scroll.utils";
 
 interface SectionProps {
     section: PageSection;
@@ -33,8 +34,8 @@ export const Section = ({ section, scrollPosition, scrollToPosition, children }:
             updateSection({ pageSection: currentPageSection, clicked: false });
         } else {
             const rect = getDomRect();
-            const midpoint = height/2;
-            if (rect.top <= midpoint && rect.bottom >= midpoint) {
+            const cutoff = getCutoff(height);
+            if (rect.top <= cutoff && rect.bottom >= cutoff) {
                 updateSection({ pageSection: section, clicked: false });
             }
         }

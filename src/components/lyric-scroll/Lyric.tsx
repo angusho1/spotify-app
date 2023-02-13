@@ -1,6 +1,7 @@
 import { createStyles, Title } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
 import { Ref, useRef } from "react";
+import { getCutoff } from "../../utils/scroll.utils";
 
 interface LyricProps {
     children: React.ReactNode;
@@ -18,18 +19,19 @@ export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
 
     const scrollToLyric = () => {
         const rect = getDomRect();
-        const position = rect.top - (height/2) + (rect.height/2);
+        const cutoff = getCutoff(height);
+        const position = rect.top - cutoff + (rect.height/2);
         scrollToPosition(position);
     };
 
     const getTextClasses = () => {
         const rect = getDomRect();
         if (!rect) return classes.lyricText;
-        const midpoint = height/2;
+        const cutoff = getCutoff(height);
         return cx(
             classes.lyricText, {
-                [classes.pastText]: rect.bottom < midpoint,
-                [classes.currentText]: rect.top <= midpoint && rect.bottom >= midpoint,
+                [classes.pastText]: rect.bottom < cutoff,
+                [classes.currentText]: rect.top <= cutoff && rect.bottom >= cutoff,
             }
         );
     };
