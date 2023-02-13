@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Global, MantineProvider } from '@mantine/core';
+import light from './fonts/CircularStd-Light.otf';
+import book from './fonts/CircularStd-Book.otf';
+import medium from './fonts/CircularStd-Medium.otf';
+import bold from './fonts/CircularStd-Bold.otf';
+import black from './fonts/CircularStd-Black.otf';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -22,7 +27,7 @@ root.render(
           {
             '@font-face': {
               fontFamily: 'Circular Std',
-              src: `url('./fonts/CircularStd-Light.otf') format("opentype")`,
+              src: `url('${light}') format("opentype")`,
               fontWeight: 100,
               fontStyle: 'normal',
             },
@@ -30,15 +35,7 @@ root.render(
           {
             '@font-face': {
               fontFamily: 'Circular Std',
-              src: `url('./fonts/CircularStd-Book.otf') format("opentype")`,
-              fontWeight: 300,
-              fontStyle: 'normal',
-            },
-          },
-          {
-            '@font-face': {
-              fontFamily: 'Circular Std',
-              src: `url('./fonts/CircularStd-Medium.otf') format("opentype")`,
+              src: `url('${book}') format("opentype")`,
               fontWeight: 400,
               fontStyle: 'normal',
             },
@@ -46,7 +43,15 @@ root.render(
           {
             '@font-face': {
               fontFamily: 'Circular Std',
-              src: `url('./fonts/CircularStd-Bold.otf') format("opentype")`,
+              src: `url('${medium}') format("opentype")`,
+              fontWeight: 500,
+              fontStyle: 'normal',
+            },
+          },
+          {
+            '@font-face': {
+              fontFamily: 'Circular Std',
+              src: `url('${bold}') format("opentype")`,
               fontWeight: 700,
               fontStyle: 'normal',
             },
@@ -54,7 +59,7 @@ root.render(
           {
             '@font-face': {
               fontFamily: 'Circular Std',
-              src: `url('./fonts/CircularStd-Black.otf') format("opentype")`,
+              src: `url('${black}') format("opentype")`,
               fontWeight: 900,
               fontStyle: 'normal',
             },
