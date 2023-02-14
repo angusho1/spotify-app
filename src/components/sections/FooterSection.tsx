@@ -41,10 +41,25 @@ export const FooterSection = ({ renderLyric }: FooterSectionProps) => {
 const useStyles = createStyles((theme) => ({
     logoText: {
         fontWeight: 700,
-        // fontSize: theme.fontSizes.xl,
     },
     logo: {
         width: '400px',
+
+        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+            width: '200px',
+        },
+
+        [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+            width: '300px',
+        },
+
+        [`@media (min-width: ${theme.breakpoints.lg}px)`]: {
+            width: '350px',
+        },
+
+        [`@media (min-width: ${theme.breakpoints.xl}px)`]: {
+            width: '400px',
+        },
     },
     text: {
         fontSize: theme.fontSizes.lg,

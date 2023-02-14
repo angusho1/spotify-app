@@ -28,29 +28,32 @@ export const ExperienceAlbum = ({ company, position, date, companyDescription, t
                 [classes.currentText]: current,
             }
         )}>
-            <Group noWrap spacing="lg" className={classes.group}>
-                <a
-                    href={companyUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    <Image
-                        radius={0}
-                        src={imgUrl}
-                        alt="Random unsplash image"
-                        width={192}
-                        height={192}
-                        classNames={{
-                            image: cx(classes.image, {
-                                [classes.fadedImage]: !current,
-                            })
-                        }}
-                    />
-                </a>
+            <Group spacing="lg" className={classes.group}>
+                <Container px={0} className={classes.imgContainer}>
+                    <a
+                        href={companyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <Image
+                            radius={0}
+                            src={imgUrl}
+                            alt="Random unsplash image"
+                            width="100%"
+                            height="100%"
+                            classNames={{
+                                image: cx(classes.image, {
+                                    [classes.fadedImage]: !current,
+                                })
+                            }}
+                        />
+                    </a>
+                </Container>
                 <Stack
                     align="flex-start"
                     justify="flex-end"
                     spacing={5}
+                    className={classes.stack}
                 >
                     <Text className={classes.position}>{ position }</Text>
                     <Title className={classes.title}>{ company }</Title>
@@ -89,6 +92,32 @@ const useStyles = createStyles((theme) => ({
         boxShadow: '0 4px 40px rgba(0,0,0,.5)',
         transition: 'opacity .1s ease-out',
     },
+    imgContainer: {
+        width: '192px',
+        height: '192px',
+
+        [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+            width: '125px',
+            height: '125px',
+        },
+
+        [`@media (min-width: ${theme.breakpoints.lg}px)`]: {
+            width: '150px',
+            height: '150px',
+        },
+
+        [`@media (min-width: ${theme.breakpoints.xl}px)`]: {
+            width: '192px',
+            height: '192px',
+        },
+    },
+    stack: {
+        flex: 1,
+
+        [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+            flex: '100%',
+        },
+    },
     fadedImage: {
         opacity: 0.2,
     },
@@ -96,6 +125,14 @@ const useStyles = createStyles((theme) => ({
         letterSpacing: '-1px',
         fontWeight: 900,
         fontSize: '3rem',
+
+        [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+            fontSize: '2.5rem',
+        },
+
+        [`@media (max-width: ${theme.breakpoints.md}px)`]: {
+            fontSize: '2rem',
+        },
     },
     position: {
         fontWeight: 500,

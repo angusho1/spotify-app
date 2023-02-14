@@ -22,7 +22,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
                 At ThoughtExchange, I interned with the Data Analysis and Visualization team, which focuses on researching and delivering new tools and algorithms that push the envelope for the core product. For my main project, I built an internal analytics tool using Python and React to help suggest key insights and actions for customers who have run exchanges with their audiences. The tool produced data visualizations that ended up going into customer reports for several high-value clients, who noted these visualizations as a highlight of their report!
                 <br />
                 <br />
-                This internship allowed me to become much more familiar and skilled with React, as it was my first professional experience working with the framework. I also had the opportunity to collaborate and work with PMs and other engineers around the company, which I hope to get more of in future internships.
+                This internship allowed me to become much more familiar and skilled with React, as it was my first professional experience working with the framework. I also had the opportunity to collaborate and work with PMs and other engineers around the company, which I hope to get more of in my next internship.
             </>
         ),
         imgUrl: teLogo,

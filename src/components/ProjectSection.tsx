@@ -1,4 +1,4 @@
-import { Container, createStyles, Group, Stack, Text, Title, UnstyledButton } from "@mantine/core";
+import { Container, createStyles, Grid, Group, Stack, Text, Title, UnstyledButton } from "@mantine/core";
 import { Project } from "../types/Project.types";
 import { Ref, useEffect, useRef } from "react";
 import { useViewportSize } from "@mantine/hooks";
@@ -50,16 +50,20 @@ export const ProjectSection = ({ name, date, text, url, videoUrl }: ProjectSecti
                     )}>View on Github</UnstyledButton>
                 </a>
             </Group>
-            <Group noWrap spacing="lg">
-                <Text className={classes.descriptionText}>{ text }</Text>
-                <video ref={videoRef} width="500" autoPlay muted loop
-                    className={cx (classes.video, {
-                        [classes.fadedVideo]: !current,
-                    }
-                )}>
-                    <source src={videoUrl} type="video/mp4" />
-                </video>
-            </Group>
+            <Grid gutter="xl" align="center">
+                <Grid.Col md={6}>
+                    <Text className={classes.descriptionText}>{ text }</Text>
+                </Grid.Col>
+                <Grid.Col md={6}>
+                    <video ref={videoRef} autoPlay muted loop
+                        className={cx (classes.video, {
+                            [classes.fadedVideo]: !current,
+                        }
+                    )}>
+                        <source src={videoUrl} type="video/mp4" />
+                    </video>
+                </Grid.Col>
+            </Grid>
         </Container>
     );
 };
@@ -108,6 +112,7 @@ const useStyles = createStyles((theme) => ({
     },
     video: {
         transition: 'opacity .1s ease-out',
+        width: '100%',
     },
     fadedVideo: {
         opacity: 0.4,

@@ -33,6 +33,7 @@ export const Lyric = ({ children, isHeading, scrollToPosition }: LyricProps) => 
             classes.lyricText, {
                 [classes.pastText]: rect.bottom < cutoff,
                 [classes.currentText]: rect.top <= cutoff && rect.bottom >= cutoff,
+                [classes.heading]: isHeading,
             }
         );
     };
@@ -42,7 +43,6 @@ export const Lyric = ({ children, isHeading, scrollToPosition }: LyricProps) => 
             ref={ref}
             className={getTextClasses()}
             order={1}
-            {...{ fz: isHeading ? 60 : undefined }}
             onClick={scrollToLyric}
         >
             { children }
@@ -57,7 +57,18 @@ const useStyles = createStyles((theme) => ({
         '&:hover': {
             color: 'white',
         },
-        transition: 'all .1s ease-out'
+        transition: 'all .1s ease-out',
+
+        [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+            fontSize: '1.5rem',
+        },
+    },
+    heading: {
+        fontSize: '4rem',
+
+        [`@media (max-width: ${theme.breakpoints.lg}px)`]: {
+            fontSize: '2.5rem',
+        },
     },
     pastText: {
         color: '#ffffffb3',
