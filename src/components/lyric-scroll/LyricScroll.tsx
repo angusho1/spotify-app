@@ -1,5 +1,6 @@
 import { Container, createStyles, ScrollArea } from "@mantine/core";
 import { useRef, useState } from "react";
+import { RenderLyricFunction, RenderLyricOptions } from "../../types/Lyric.types";
 import { PageSection } from "../../types/PageSection.enum";
 import { AboutMeSection } from "../sections/AboutMeSection";
 import { ExperiencesSection } from "../sections/ExperiencesSection";
@@ -22,8 +23,8 @@ export const LyricScroll = () => {
         });
     };
 
-    const renderLyric = (text: string, key?: any) => (
-        <Lyric key={key} scrollToPosition={scrollToPosition}>
+    const renderLyric: RenderLyricFunction = (text: string, options?: RenderLyricOptions) => (
+        <Lyric key={options?.key} isHeading={options?.heading || undefined} scrollToPosition={scrollToPosition}>
             { text }
         </Lyric>
     );

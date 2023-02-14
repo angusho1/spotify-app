@@ -1,4 +1,6 @@
 import { Container, createStyles, Group, Image, Stack, Text, Title } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
+import { Ref, useRef } from "react";
 import { WorkExperience } from "../types/Experience.types";
 
 type ExperienceAlbumProps = WorkExperience & {
@@ -6,10 +8,26 @@ type ExperienceAlbumProps = WorkExperience & {
 }
 
 export const ExperienceAlbum = ({ company, position, date, companyDescription, text, imgUrl, companyUrl }: ExperienceAlbumProps) => {
-    const { classes } = useStyles();
+    const { classes, cx } = useStyles();
+    const ref = useRef() as Ref<HTMLDivElement>;
+    const { height } = useViewportSize();
+
+    const getDomRect = (): DOMRect => {
+        return (ref as any)?.current?.getBoundingClientRect();
+    };
+
+    const rect = getDomRect();
+    const cutoff = height / 2;
+    const passed = rect?.bottom < cutoff;
+    const current = rect?.top <= cutoff && rect.bottom >= cutoff;
 
     return (
-        <Container px={0} className={classes.container}>
+        <Container ref={ref} px={0} className={cx(
+            classes.container, {
+                [classes.pastText]: passed,
+                [classes.currentText]: current,
+            }
+        )}>
             <Group noWrap spacing="lg" className={classes.group}>
                 <a
                     href={companyUrl}
@@ -32,7 +50,14 @@ export const ExperienceAlbum = ({ company, position, date, companyDescription, t
                 >
                     <Text className={classes.position}>{ position }</Text>
                     <Title className={classes.title}>{ company }</Title>
-                    <Text className={classes.companyDescription}>{ companyDescription }</Text>
+                    <Text className={cx(
+                        classes.companyDescription, {
+                            [classes.pastText]: passed,
+                            [classes.currentCompanyDescription]: current,
+                        }
+                    )}>
+                        { companyDescription }
+                    </Text>
                     <Text className={classes.date}>{ date }</Text>
                 </Stack>
             </Group>
@@ -43,8 +68,14 @@ export const ExperienceAlbum = ({ company, position, date, companyDescription, t
 
 const useStyles = createStyles((theme) => ({
     container: {
-        color: theme.white,
+        // color: theme.black,
         margin: '50px auto',
+    },
+    pastText: {
+        color: '#ffffffb3',
+    },
+    currentText: {
+        color: theme.white,
     },
     group: {
         alignItems: 'flex-end',
@@ -65,7 +96,9 @@ const useStyles = createStyles((theme) => ({
     },
     companyDescription: {
         fontSize: theme.fontSizes.sm,
-        color: 'hsla(0,0%,100%,.7)'
+    },
+    currentCompanyDescription: {
+        color: 'hsla(0,0%,100%,.7)',
     },
     date: {
         fontWeight: 400,

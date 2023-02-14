@@ -92,10 +92,10 @@ const useStyles = createStyles((theme) => ({
         paddingTop: '25px',
     },
     icon: {
-        color: theme.white,
+        color: '#b3b3b3',
 
         '&:hover': {
-            color: '#b3b3b3',
+            color: theme.white,
             transition: 'color .2s linear',
         },
     },

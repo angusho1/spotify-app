@@ -5,10 +5,11 @@ import { getCutoff } from "../../utils/scroll.utils";
 
 interface LyricProps {
     children: React.ReactNode;
+    isHeading?: boolean;
     scrollToPosition: (position: number) => void;
 }
 
-export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
+export const Lyric = ({ children, isHeading, scrollToPosition }: LyricProps) => {
     const { classes, cx } = useStyles();
     const ref = useRef() as Ref<HTMLHeadingElement>;
     const { height } = useViewportSize();
@@ -41,6 +42,7 @@ export const Lyric = ({ children, scrollToPosition }: LyricProps) => {
             ref={ref}
             className={getTextClasses()}
             order={1}
+            {...{ fz: isHeading ? 60 : undefined }}
             onClick={scrollToLyric}
         >
             { children }

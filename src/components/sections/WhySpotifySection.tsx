@@ -1,7 +1,8 @@
 import { Container, Space } from "@mantine/core";
+import { RenderLyricFunction } from "../../types/Lyric.types";
 
 interface WhySpotifySectionProps {
-    renderLyric: (text: string, key?: any) => JSX.Element;
+    renderLyric: RenderLyricFunction;
 }
 
 export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
@@ -10,7 +11,7 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
         `Get better at writing scalable CSS and React`,
         `Learn to be more efficient with data (querying, sending, storage)`,
         `Solve complex technical problems involving distributed applications`,
-        `Understand the processes involved with building features for people around the world`,
+        `Understand the technical and human processes involved with building features for people around the world`,
     ];
 
     const toAchieve = [
@@ -22,17 +23,18 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
     ];
 
     return (
-        <Container px={0} pb={50}>
-            { renderLyric('Why an internship at Spotify?') }
+        <Container px={0} pt={100} pb={50}>
+            { renderLyric('Why an internship at Spotify?', { heading: true }) }
             <Space h="xl" />
             { renderLyric('Spotify has given a lot to me over the years, so I feel inspired to give back and make the greatest impact I can.') }
             { renderLyric('Since this will most likely be my final internship before I graduate next year, I want to get the most I can out of it.') }
             <Space h="xl" />
             { renderLyric(`Here are some learning goals I’d like to fulfill with a Spotify internship:`) }
-            { learningGoals.map((goal, index) => renderLyric(goal, index)) }
+            { learningGoals.map((goal, index) => renderLyric(goal, { key: index })) }
+            <Space h="xl" />
             <Space h="xl" />
             { renderLyric(`These are some things I’d like to achieve during my time at Spotify:`) }
-            { toAchieve.map((goal, index) => renderLyric(goal, index)) }
+            { toAchieve.map((goal, index) => renderLyric(goal, { key: index })) }
         </Container>
     );
 };

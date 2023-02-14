@@ -1,9 +1,10 @@
 import { ActionIcon, Anchor, Container, createStyles, Group, Image, MantineSize, Space, Stack, Text, Title } from "@mantine/core";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons";
 import SpotifyLogo from '../../assets/logos/Spotify_Logo_RGB_Black.png';
+import { RenderLyricFunction } from "../../types/Lyric.types";
 
 interface FooterSectionProps {
-    renderLyric: (text: string, key?: any) => JSX.Element;
+    renderLyric: RenderLyricFunction;
 }
 
 const socialIconProps = {

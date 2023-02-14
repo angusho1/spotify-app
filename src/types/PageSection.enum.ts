@@ -2,7 +2,7 @@ export enum PageSection {
     INTRO = 'About Me',
     EXPERIENCE = 'Work Experience',
     PROJECTS = 'Projects',
-    WHY = 'Why Spotify',
+    WHY = 'Why Spotify?',
     FOOTER = 'Footer',
 }
 
@@ -14,7 +14,7 @@ export const PageSectionSettings = {
         color: '#a24477',
     },
     [PageSection.PROJECTS]: {
-        color: '#413ea6',
+        color: '#5450bf',
     },
     [PageSection.WHY]: {
         color: '#A4682C',
