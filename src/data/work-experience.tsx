@@ -19,10 +19,10 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
         date: 'Fall 2022 • 4 months • Full Time',
         text: (
             <>
-                I interned with the Data Analysis and Visualization team, which focuses on researching and delivering new tools and algorithms that push the envelope for the core product. For my main project, I built an internal analytics tool using Python and React to help suggest key insights and actions for customers who have run exchanges with their audiences. The tool produced data visualizations which ended up going into customer reports for several high-value clients.
+                At ThoughtExchange, I interned with the Data Analysis and Visualization team, which focuses on researching and delivering new tools and algorithms that push the envelope for the core product. For my main project, I built an internal analytics tool using Python and React to help suggest key insights and actions for customers who have run exchanges with their audiences. The tool produced data visualizations that ended up going into customer reports for several high-value clients, who noted these visualizations as a highlight of their report!
                 <br />
                 <br />
-                This was my first professional experience working in React, as my React experience up to this point had all been project-based. 
+                This internship allowed me to become much more familiar and skilled with React, as it was my first professional experience working with the framework. I also had the opportunity to collaborate and work with PMs and other engineers around the company, which I hope to get more of in future internships.
             </>
         ),
         imgUrl: teLogo,
@@ -54,7 +54,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
                 At my first co-op, I worked with 4 different early-stage tech startups for 2 months each, developing PoCs, MVPs, and helping to scale up their codebases. Because of the limited time I had with each venture, I needed to learn their tech stack quickly while developing a tight scope for the project. I learned new skills like Angular, C#, ASP.NET Core, Tornado, and AWS, all on the job.
                 <br />
                 <br />
-                I'm grateful for being able to work on some interesting projects. For <Anchor {...anchorProps} href="https://www.storagehotel.ca/" target="_blank">Storagehotel</Anchor>, I built an inventory management system MVP in the MEAN stack, for which I had to design a hierarchical structure for storing items. At <Anchor {...anchorProps} href="https://www.neupeak.com/" target="_blank">Neupeak Robotics</Anchor>, I built a prototype web app in Python and HTML/CSS/JavaScript that can monitor and control <Anchor {...anchorProps} href="https://www.ros.org/" target="_blank">ROS (Robot Operating System)</Anchor> nodes. I learned how to use WebSockets to maintain real-time bidirectional communication between the UI and the server's robot nodes.
+                I'm grateful for being able to work on some interesting projects. For <Anchor {...anchorProps} href="https://www.storagehotel.ca/" target="_blank">Storagehotel</Anchor>, I built an inventory management system MVP in the MEAN stack, for which I designed a hierarchical tree structure for storing items. At <Anchor {...anchorProps} href="https://www.neupeak.com/" target="_blank">Neupeak Robotics</Anchor>, I built a prototype web app in Python and HTML/CSS/JavaScript that could monitor and control <Anchor {...anchorProps} href="https://www.ros.org/" target="_blank">ROS (Robot Operating System)</Anchor> nodes. I learned how to use WebSockets to maintain real-time bidirectional communication between the UI and the server's robot nodes.
             </>
         ),
         imgUrl: eUBCLogo,

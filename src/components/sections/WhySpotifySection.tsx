@@ -18,7 +18,7 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
         `Develop software that simplifies daily needs and makes people more productive`,
         `Take initiative with designing my project`,
         `Take initiative with getting feedback from colleagues and mentors`,
-        `Contribute to making Spotify a welcoming, inclusive workplace that values diverse perspectives`,
+        `Contribute to making Spotify a welcoming, inclusive workplace that values diverse perspectives and experiences`,
         `Build meaningful and lasting connections with fellow Spotify employees`,
     ];
 
@@ -26,15 +26,19 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
         <Container px={0} pt={100} pb={50}>
             { renderLyric('Why an internship at Spotify?', { heading: true }) }
             <Space h="xl" />
-            { renderLyric('Spotify has given a lot to me over the years, so I feel inspired to give back and make the greatest impact I can.') }
-            { renderLyric('Since this will most likely be my final internship before I graduate next year, I want to get the most I can out of it.') }
+            { renderLyric('Spotify has given a lot to me over the years, so I feel inspired to give back and make the greatest impact I can. I hope to make this my biggest learning experience yet by facing my biggest challenges, while also being able to enjoy every moment of it.') }
             <Space h="xl" />
-            { renderLyric(`Here are some learning goals I’d like to fulfill with a Spotify internship:`) }
+            <Space h="xl" />
+            { renderLyric(`Here are some learning goals I'd like to fulfill with a Spotify internship:`) }
             { learningGoals.map((goal, index) => renderLyric(goal, { key: index })) }
             <Space h="xl" />
             <Space h="xl" />
-            { renderLyric(`These are some things I’d like to achieve during my time at Spotify:`) }
+            { renderLyric(`These are some things I'd like to achieve during my time at Spotify:`) }
             { toAchieve.map((goal, index) => renderLyric(goal, { key: index })) }
+            <Space h="xl" />
+            <Space h="xl" />
+            { renderLyric(`And that's a Wrap! I hope to see you this summer :)`) }
+            { renderLyric('♪') }
         </Container>
     );
 };

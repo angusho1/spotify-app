@@ -23,8 +23,8 @@ export const FooterSection = ({ renderLyric }: FooterSectionProps) => {
                     <Image src={SpotifyLogo} />
                 </Container>
                 <Space h="xl" />
-                <Text className={classes.text}>View this project on <Anchor fw={700} color="dark" href="https://github.com/angusho1/spotify-app" target="_blank">Github</Anchor></Text>
                 <Text className={classes.text}>By Angus Ho</Text>
+                <Text className={classes.text}>View this project on <Anchor fw={700} color="dark" href="https://github.com/angusho1/spotify-app" target="_blank">Github</Anchor></Text>
                 <Group>
                     <ActionIcon className={classes.icon} component="a" href="https://www.linkedin.com/in/angusho24/" target="_blank" aria-label="LinkedIn" {...socialIconProps}>
                         <IconBrandLinkedin />
