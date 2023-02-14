@@ -1,23 +1,27 @@
 {
   "files": {
     "main.css": "/spotify-app/static/css/main.8a685450.css",
-    "main.js": "/spotify-app/static/js/main.42114d43.js",
+    "main.js": "/spotify-app/static/js/main.daefa113.js",
     "static/js/787.8f29a1ac.chunk.js": "/spotify-app/static/js/787.8f29a1ac.chunk.js",
-    "static/media/test.mp4": "/spotify-app/static/media/test.85163318365c95e6c9a8.mp4",
+    "static/media/chinatown-sound-map.mov": "/spotify-app/static/media/chinatown-sound-map.5a984156efc286892ff9.mov",
+    "static/media/laser-eyes.mov": "/spotify-app/static/media/laser-eyes.1b98a43db0a5185a7f55.mov",
+    "static/media/file-explorer.mov": "/spotify-app/static/media/file-explorer.2872a9e50ea9ff2dbbb5.mov",
     "static/media/CircularStd-Light.otf": "/spotify-app/static/media/CircularStd-Light.4a1a0bfcc3a53847a945.otf",
     "static/media/CircularStd-Black.otf": "/spotify-app/static/media/CircularStd-Black.757b8ac8efa71be3fcd0.otf",
     "static/media/CircularStd-Bold.otf": "/spotify-app/static/media/CircularStd-Bold.5c4514a8399ec0064b9b.otf",
     "static/media/CircularStd-Medium.otf": "/spotify-app/static/media/CircularStd-Medium.9ffafeddf192e8c8a111.otf",
     "static/media/CircularStd-Book.otf": "/spotify-app/static/media/CircularStd-Book.9048137056e4347dbbd5.otf",
     "static/media/leafi-logo.png": "/spotify-app/static/media/leafi-logo.b80b71cd0627c7a2832c.png",
+    "static/media/Spotify_Logo_RGB_Black.png": "/spotify-app/static/media/Spotify_Logo_RGB_Black.0d1e5545dee9f6dc1079.png",
+    "static/media/Spotify_Logo_RGB_White.png": "/spotify-app/static/media/Spotify_Logo_RGB_White.f48fb565509bf23854a8.png",
     "static/media/e-ubc-logo.jpg": "/spotify-app/static/media/e-ubc-logo.c138f101b67448c3fc18.jpg",
     "index.html": "/spotify-app/index.html",
     "main.8a685450.css.map": "/spotify-app/static/css/main.8a685450.css.map",
-    "main.42114d43.js.map": "/spotify-app/static/js/main.42114d43.js.map",
+    "main.daefa113.js.map": "/spotify-app/static/js/main.daefa113.js.map",
     "787.8f29a1ac.chunk.js.map": "/spotify-app/static/js/787.8f29a1ac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8a685450.css",
-    "static/js/main.42114d43.js"
+    "static/js/main.daefa113.js"
   ]
 }
