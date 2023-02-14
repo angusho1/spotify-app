@@ -14,6 +14,7 @@ export const PROJECTS: Project[] = [
             </>
         ),
         url: 'https://github.com/angusho1/chinatown-sound-map',
+        videoUrl: require('../assets/videos/chinatown-sound-map.mov'),
     },
     {
         name: 'File Explorer',
@@ -27,6 +28,7 @@ export const PROJECTS: Project[] = [
             </>
         ),
         url: 'https://github.com/angusho1/file-explorer',
+        videoUrl: require('../assets/videos/file-explorer.mov'),
     },
     {
         name: 'Laser Eyes',
@@ -40,5 +42,6 @@ export const PROJECTS: Project[] = [
             </>
         ),
         url: 'https://github.com/angusho1/laser-eyes',
+        videoUrl: require('../assets/videos/laser-eyes.mov'),
     },
 ];

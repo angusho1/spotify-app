@@ -1,15 +1,13 @@
-import { Anchor, Button, Container, createStyles, Group, Image, Stack, Text, Title, UnstyledButton } from "@mantine/core";
+import { Container, createStyles, Group, Stack, Text, Title, UnstyledButton } from "@mantine/core";
 import { Project } from "../types/Project.types";
-import testVideo from '../assets/videos/test.mp4';
 import { Ref, useEffect, useRef } from "react";
 import { useViewportSize } from "@mantine/hooks";
-import { getCutoff } from "../utils/scroll.utils";
 
 type ProjectSectionProps = Project & {
     
 }
 
-export const ProjectSection = ({ name, date, text, url }: ProjectSectionProps) => {
+export const ProjectSection = ({ name, date, text, url, videoUrl }: ProjectSectionProps) => {
     const { classes, cx } = useStyles();
     const ref = useRef() as Ref<HTMLDivElement>;
     const videoRef = useRef() as Ref<HTMLVideoElement>;
@@ -60,8 +58,8 @@ export const ProjectSection = ({ name, date, text, url }: ProjectSectionProps) =
             </Group>
             <Group noWrap spacing="lg">
                 <Text className={classes.descriptionText}>{ text }</Text>
-                <video ref={videoRef} width="400" height="200" autoPlay muted loop>
-                    <source src={testVideo} type="video/mp4" />
+                <video ref={videoRef} width="500" autoPlay muted loop>
+                    <source src={videoUrl} type="video/mp4" />
                 </video>
             </Group>
         </Container>
