@@ -18,8 +18,8 @@ root.render(
     <MantineProvider withGlobalStyles withNormalizeCSS
       theme={{ 
         primaryColor: 'green',
-        fontFamily: 'Circular Std',
-        headings: { fontFamily: 'Circular Std' },
+        fontFamily: 'Circular Std, sans-serif',
+        headings: { fontFamily: 'Circular Std, sans-serif' },
       }}
     >
       <Global

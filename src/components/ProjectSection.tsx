@@ -17,48 +17,46 @@ export const ProjectSection = ({ name, date, text, url, videoUrl }: ProjectSecti
         return (ref as any)?.current?.getBoundingClientRect();
     };
 
-    const checkIsActive = () => {
-        const rect = getDomRect();
-        if (!rect) return false;
-        const cutoff = height/2;
-        return rect.top <= cutoff && rect.bottom >= cutoff;
-    };
-
-    const isActive = checkIsActive();
+    const rect = getDomRect();
+    const cutoff = height / 2;
+    const passed = rect?.bottom < cutoff;
+    const current = rect?.top <= cutoff && rect.bottom >= cutoff;
 
     useEffect(() => {
         if (videoRef) {
-            if (isActive) (videoRef as any).current.play();
+            if (current) (videoRef as any).current.play();
             else (videoRef as any).current.pause();
         }
-    }, [isActive, videoRef]);
-
-    const getContainerClasses = () => {
-        const rect = getDomRect();
-        if (!rect) return classes.container;
-        const cutoff = height/2;
-        return cx(
-            classes.container, {
-                [classes.pastText]: rect.bottom < cutoff,
-                [classes.currentText]: rect.top <= cutoff && rect.bottom >= cutoff,
-            }
-        );
-    };
+    }, [current, videoRef]);
 
     return (
-        <Container ref={ref} px={0} className={getContainerClasses()}>
+        <Container ref={ref} px={0} className={cx(
+            classes.container, {
+                [classes.pastText]: passed,
+                [classes.currentText]: current,
+            }
+        )}>
             <Group className={classes.group}>
                 <Stack spacing={5}>
                     <Title className={classes.title}>{ name }</Title>
                     <Text className={classes.date}>{ date }</Text>
                 </Stack>
                 <a href={url} target="_blank" rel="noreferrer">
-                    <UnstyledButton className={classes.button}>View on Github</UnstyledButton>
+                    <UnstyledButton className={cx(
+                        classes.button, {
+                            [classes.buttonPassed]: passed,
+                            [classes.buttonCurrent]: current,
+                        }
+                    )}>View on Github</UnstyledButton>
                 </a>
             </Group>
             <Group noWrap spacing="lg">
                 <Text className={classes.descriptionText}>{ text }</Text>
-                <video ref={videoRef} width="500" autoPlay muted loop>
+                <video ref={videoRef} width="500" autoPlay muted loop
+                    className={cx (classes.video, {
+                        [classes.fadedVideo]: !current,
+                    }
+                )}>
                     <source src={videoUrl} type="video/mp4" />
                 </video>
             </Group>
@@ -68,7 +66,6 @@ export const ProjectSection = ({ name, date, text, url, videoUrl }: ProjectSecti
 
 const useStyles = createStyles((theme) => ({
     container: {
-        // color: theme.white,
         margin: '50px auto',
     },
     pastText: {
@@ -81,15 +78,22 @@ const useStyles = createStyles((theme) => ({
         justifyContent: 'space-between',
     },
     button: {
-        color: 'black',
-        backgroundColor: 'white',
         fontWeight: 700,
         padding: '1rem',
         borderRadius: '500px',
+        transition: 'opacity .1s ease-out',
 
         '&:hover': {
             transform: 'scale(1.02)',
         }
+    },
+    buttonPassed: {
+        color: 'black',
+        backgroundColor: '#ffffffb3',
+    },
+    buttonCurrent: {
+        color: 'black',
+        backgroundColor: 'white',
     },
     title: {
         letterSpacing: '-1px',
@@ -101,5 +105,11 @@ const useStyles = createStyles((theme) => ({
     },
     descriptionText: {
         marginTop: '30px',
+    },
+    video: {
+        transition: 'opacity .1s ease-out',
+    },
+    fadedVideo: {
+        opacity: 0.4,
     },
 }));

@@ -7,7 +7,7 @@ import { Anchor } from "@mantine/core";
 const anchorProps = {
     fw: 500,
     sx: {
-        color: 'white',
+        color: 'inherit',
     }
 }
 

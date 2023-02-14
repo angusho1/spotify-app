@@ -40,7 +40,11 @@ export const ExperienceAlbum = ({ company, position, date, companyDescription, t
                         alt="Random unsplash image"
                         width={192}
                         height={192}
-                        classNames={{ image: classes.image }}
+                        classNames={{
+                            image: cx(classes.image, {
+                                [classes.fadedImage]: !current,
+                            })
+                        }}
                     />
                 </a>
                 <Stack
@@ -83,6 +87,10 @@ const useStyles = createStyles((theme) => ({
     image: {
         WebkitBoxShadow: '0 4px 40px rgba(0,0,0,.5)',
         boxShadow: '0 4px 40px rgba(0,0,0,.5)',
+        transition: 'opacity .1s ease-out',
+    },
+    fadedImage: {
+        opacity: 0.2,
     },
     title: {
         letterSpacing: '-1px',

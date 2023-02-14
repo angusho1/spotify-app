@@ -1,4 +1,4 @@
-import { Container, Title } from "@mantine/core";
+import { Container } from "@mantine/core";
 import { RenderLyricFunction } from "../../types/Lyric.types";
 
 interface AboutMeSectionProps {

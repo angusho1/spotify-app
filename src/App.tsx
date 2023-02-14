@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 import './App.css';
-import { Container, createStyles, Group, useMantineTheme } from '@mantine/core';
+import { Container, createStyles, Group } from '@mantine/core';
 import { LyricScroll } from './components/lyric-scroll/LyricScroll';
 import { SideNavBar } from './components/nav-bar/SideNavBar';
 import { PageSection, PageSectionSettings } from './types/PageSection.enum';
@@ -14,7 +14,6 @@ export const SectionContext = createContext({
 
 function App() {
   const { classes } = useStyles();
-  const theme = useMantineTheme();
   const [pageSectionState, setPageSectionState] = useState<PageSectionState>({
     pageSection: PageSection.INTRO,
     clicked: false,

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ActionIcon, Anchor, Container, createStyles, Group, Image, Navbar, Stack, Title } from '@mantine/core';
+import { ActionIcon, Container, createStyles, Group, Image, Navbar, Stack, Title } from '@mantine/core';
 import { NavButton } from './NavButton';
 import { SectionContext } from '../../App';
 import { PageSection } from '../../types/PageSection.enum';
