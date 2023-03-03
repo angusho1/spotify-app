@@ -7,17 +7,15 @@ interface WhySpotifySectionProps {
 
 export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
     const learningGoals = [
-        `Gain (a lot of) experience working with Java in a professional setting`,
-        `Get better at writing scalable CSS and React`,
-        `Learn to be more efficient with data (querying, sending, storage)`,
-        `Solve complex technical problems involving distributed applications`,
+        `Gain a ton of experience developing APIs and backend services in Java`,
+        `Get better at writing highly scalable CSS and React`,
+        `Work with a complex software architecture and learn how infrastructure is scaled`,
         `Understand the technical and human processes involved with building features for people around the world`,
     ];
 
     const toAchieve = [
-        `Develop software that simplifies daily needs and makes people more productive`,
-        `Take initiative with designing my project`,
-        `Take initiative with getting feedback from colleagues and mentors`,
+        `Develop software that simplifies user workflows and makes them more productive`,
+        `Take initiative with designing my project and getting feedback from colleagues`,
         `Contribute to making Spotify a welcoming, inclusive workplace that values diverse perspectives and experiences`,
         `Build meaningful and lasting connections with fellow Spotify employees`,
     ];
@@ -26,14 +24,14 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
         <Container px={0} pt={100} pb={50}>
             { renderLyric('Why an internship at Spotify?', { heading: true }) }
             <Space h="xl" />
-            { renderLyric('Spotify has given a lot to me over the years, so I feel inspired to give back and make the greatest impact I can. I see Spotify as a space for creators - not just artists, musicians, and podcasters, but also the employees who create the experiences we enjoy. I hope to make this internship my biggest learning experience yet by seeing what I have within my abilities to create for the world.') }
+            { renderLyric(`Spotify has given a lot to me over the (y)ears 🎧, so I feel inspired to give back and make the greatest impact I can. I see Spotify as a space for creators - and I think that includes the employees who create the platform we use and enjoy. I'd like to join on the journey of creating the best possible software experience, and I want to make this my biggest learning experience yet.`) }
             <Space h="xl" />
             <Space h="xl" />
             { renderLyric(`Here are some learning goals I'd like to fulfill with a Spotify internship:`) }
             { learningGoals.map((goal, index) => renderLyric(goal, { key: index })) }
             <Space h="xl" />
             <Space h="xl" />
-            { renderLyric(`These are some things I'd like to achieve during my time at Spotify:`) }
+            { renderLyric(`These are some things I'd like do during my time at Spotify:`) }
             { toAchieve.map((goal, index) => renderLyric(goal, { key: index })) }
             <Space h="xl" />
             <Space h="xl" />
