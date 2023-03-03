@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/spotify-app/static/css/main.8a685450.css",
-    "main.js": "/spotify-app/static/js/main.daefa113.js",
+    "main.js": "/spotify-app/static/js/main.cc6f1066.js",
     "static/js/787.8f29a1ac.chunk.js": "/spotify-app/static/js/787.8f29a1ac.chunk.js",
     "static/media/chinatown-sound-map.mov": "/spotify-app/static/media/chinatown-sound-map.5a984156efc286892ff9.mov",
     "static/media/laser-eyes.mov": "/spotify-app/static/media/laser-eyes.1b98a43db0a5185a7f55.mov",
@@ -17,11 +17,11 @@
     "static/media/e-ubc-logo.jpg": "/spotify-app/static/media/e-ubc-logo.c138f101b67448c3fc18.jpg",
     "index.html": "/spotify-app/index.html",
     "main.8a685450.css.map": "/spotify-app/static/css/main.8a685450.css.map",
-    "main.daefa113.js.map": "/spotify-app/static/js/main.daefa113.js.map",
+    "main.cc6f1066.js.map": "/spotify-app/static/js/main.cc6f1066.js.map",
     "787.8f29a1ac.chunk.js.map": "/spotify-app/static/js/787.8f29a1ac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8a685450.css",
-    "static/js/main.daefa113.js"
+    "static/js/main.cc6f1066.js"
   ]
 }
