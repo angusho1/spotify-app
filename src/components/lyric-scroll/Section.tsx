@@ -12,6 +12,8 @@ interface SectionProps {
     children: React.ReactNode;
 }
 
+const FOOTER_CUTOFF = 0.6;
+
 export const Section = ({ section, scrollPosition, scrollToPosition, children }: SectionProps) => {
     const ref = useRef() as Ref<HTMLDivElement>;
     const { height } = useViewportSize();
@@ -27,6 +29,15 @@ export const Section = ({ section, scrollPosition, scrollToPosition, children }:
         scrollToPosition(position);
     };
 
+    const getCutoffs = () => {
+        const regularCutoff = getCutoff(height);
+        const footerCutoff = height * FOOTER_CUTOFF
+        return {
+            topCutoff: section === PageSection.FOOTER ? footerCutoff : regularCutoff,
+            bottomCutoff: section === PageSection.WHY ? footerCutoff : regularCutoff,
+        };
+    };
+
     const checkSection = () => {
         if (currentPageSection === section && !clicked) return;
         if (currentPageSection === section && clicked) {
@@ -34,8 +45,8 @@ export const Section = ({ section, scrollPosition, scrollToPosition, children }:
             updateSection({ pageSection: currentPageSection, clicked: false });
         } else {
             const rect = getDomRect();
-            const cutoff = getCutoff(height);
-            if (rect.top <= cutoff && rect.bottom >= cutoff) {
+            const { topCutoff, bottomCutoff } = getCutoffs();
+            if (rect.top <= topCutoff && rect.bottom >= bottomCutoff) {
                 updateSection({ pageSection: section, clicked: false });
             }
         }

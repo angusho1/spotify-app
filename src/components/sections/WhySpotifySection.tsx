@@ -24,7 +24,7 @@ export const WhySpotifySection = ({ renderLyric }: WhySpotifySectionProps) => {
         <Container px={0} pt={100} pb={50}>
             { renderLyric('Why an internship at Spotify?', { heading: true }) }
             <Space h="xl" />
-            { renderLyric(`Spotify has given a lot to me over the (y)ears 🎧, so I feel inspired to give back and make the greatest impact I can. I see Spotify as a space for creators - and I think that includes the employees who create the platform we use and enjoy. I'd like to join on the journey of creating the best possible software experience, and I want to make this my biggest learning experience yet.`) }
+            { renderLyric(`Spotify has given a lot to me over the (y)ears 🎧, so I feel inspired to give back and make the greatest impact I can. I see Spotify as a space for creators - and I think that includes the employees who create the platform we use and enjoy. I'd like to join on the journey in creating the best possible software experience, and I want to make this my biggest learning experience yet.`) }
             <Space h="xl" />
             <Space h="xl" />
             { renderLyric(`Here are some learning goals I'd like to fulfill with a Spotify internship:`) }
